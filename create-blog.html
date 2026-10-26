@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevNotes - Create_Blog</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: JetBrains Mono & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D1117;
+            color: #E6EDF3;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#58A6FF] selection:text-[#0D1117]">
+
+    <!-- NAVBAR HEADER -->
+    <header class="sticky top-0 z-50 bg-[#161B22]/90 backdrop-blur-md border-b border-[#30363D]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <div class="w-9 h-9 rounded-lg bg-[#58A6FF]/10 border border-[#58A6FF]/30 flex items-center justify-center group-hover:border-[#58A6FF] transition-colors">
+                            <i class="fa-solid fa-terminal text-[#58A6FF] text-lg"></i>
+                        </div>
+                        <span class="font-mono text-xl font-bold tracking-tight text-[#E6EDF3]">
+                            Dev<span class="text-[#58A6FF]">Notes</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1 font-mono text-sm">
+                    <a href="index.html" class="px-3 py-2 rounded-md text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D]/50 transition-colors">
+                        Home
+                    </a>
+                    <a href="dashboard.html" class="px-3 py-2 rounded-md text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D]/50 transition-colors">
+                        Dashboard
+                    </a>
+                    <a href="create-blog.html" class="px-3 py-2 rounded-md font-semibold text-[#58A6FF] bg-[#58A6FF]/10 border border-[#58A6FF]/20">
+                        Create_Blog
+                    </a>
+                    <a href="login.html" class="px-3 py-2 rounded-md text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D]/50 transition-colors">
+                        Login
+                    </a>
+                    <a href="register.html" class="ml-2 px-4 py-1.5 rounded-md text-[#0D1117] bg-[#58A6FF] hover:bg-[#79c0ff] font-medium transition-all shadow-sm">
+                        Register
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D] focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-[#30363D] bg-[#161B22] px-4 pt-2 pb-4 space-y-2 font-mono text-sm">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D]/50">Home</a>
+            <a href="dashboard.html" class="block px-3 py-2 rounded-md text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D]/50">Dashboard</a>
+            <a href="create-blog.html" class="block px-3 py-2 rounded-md font-semibold text-[#58A6FF] bg-[#58A6FF]/10">Create_Blog</a>
+            <a href="login.html" class="block px-3 py-2 rounded-md text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D]/50">Login</a>
+            <a href="register.html" class="block px-3 py-2 rounded-md text-center text-[#0D1117] bg-[#58A6FF] font-medium mt-2">Register</a>
+        </div>
+    </header>
+
+    <!-- CREATE BLOG MAIN CONTENT -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+        
+        <div class="mb-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#58A6FF]/10 border border-[#58A6FF]/20 text-[#58A6FF] text-xs font-mono mb-3">
+                <i class="fa-solid fa-pen-nib"></i> Editor Mode
+            </div>
+            <h1 class="text-3xl font-bold text-[#E6EDF3] tracking-tight">Create New Technical Article</h1>
+            <p class="text-[#8B949E] text-sm mt-1">Share your engineering insights, code tutorials, or system architecture breakdowns.</p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-[#161B22] border border-[#30363D] rounded-xl p-6 sm:p-8 shadow-xl">
+            <form id="create-blog-form" class="space-y-6">
+                
+                <!-- Title Field -->
+                <div>
+                    <label class="block text-xs font-mono text-[#8B949E] uppercase tracking-wider mb-2" for="blog-title">Article Title</label>
+                    <input type="text" id="blog-title" placeholder="e.g., Understanding Event Loops in Node.js" required
+                        class="w-full bg-[#0D1117] border border-[#30363D] rounded-lg px-4 py-3 text-sm text-[#E6EDF3] placeholder-[#8B949E]/50 focus:outline-none focus:border-[#58A6FF] transition-colors font-medium">
+                </div>
+
+                <!-- Category & Read Time Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-mono text-[#8B949E] uppercase tracking-wider mb-2" for="blog-category">Category</label>
+                        <select id="blog-category" class="w-full bg-[#0D1117] border border-[#30363D] rounded-lg px-4 py-3 text-sm text-[#E6EDF3] focus:outline-none focus:border-[#58A6FF] transition-colors font-mono">
+                            <option value="Frontend">Frontend</option>
+                            <option value="Backend">Backend</option>
+                            <option value="DevOps">DevOps</option>
+                            <option value="AI & ML">AI & ML</option>
+                            <option value="Architecture">Architecture</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono text-[#8B949E] uppercase tracking-wider mb-2" for="blog-readtime">Estimated Read Time</label>
+                        <input type="text" id="blog-readtime" placeholder="e.g., 5 min read" required
+                            class="w-full bg-[#0D1117] border border-[#30363D] rounded-lg px-4 py-3 text-sm text-[#E6EDF3] placeholder-[#8B949E]/50 focus:outline-none focus:border-[#58A6FF] transition-colors font-mono">
+                    </div>
+                </div>
+
+                <!-- Excerpt / Short Summary -->
+                <div>
+                    <label class="block text-xs font-mono text-[#8B949E] uppercase tracking-wider mb-2" for="blog-excerpt">Short Excerpt / Summary</label>
+                    <textarea id="blog-excerpt" rows="2" placeholder="Write a brief 1-2 sentence description of your post..." required
+                        class="w-full bg-[#0D1117] border border-[#30363D] rounded-lg px-4 py-3 text-sm text-[#E6EDF3] placeholder-[#8B949E]/50 focus:outline-none focus:border-[#58A6FF] transition-colors resize-none"></textarea>
+                </div>
+
+                <!-- Main Content / Markdown -->
+                <div>
+                    <label class="block text-xs font-mono text-[#8B949E] uppercase tracking-wider mb-2" for="blog-content">Main Content (Markdown supported)</label>
+                    <textarea id="blog-content" rows="8" placeholder="Start typing your full article markdown here..." required
+                        class="w-full bg-[#0D1117] border border-[#30363D] rounded-lg p-4 text-sm text-[#E6EDF3] placeholder-[#8B949E]/50 focus:outline-none focus:border-[#58A6FF] transition-colors font-mono text-xs leading-relaxed"></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center justify-end gap-4 pt-4 border-t border-[#30363D]">
+                    <a href="dashboard.html" class="px-5 py-2.5 rounded-lg border border-[#30363D] text-[#8B949E] hover:text-[#E6EDF3] hover:bg-[#30363D]/50 transition-all font-mono text-sm">
+                        Cancel
+                    </a>
+                    <button type="submit" class="px-6 py-2.5 rounded-lg bg-[#58A6FF] text-[#0D1117] font-semibold hover:bg-[#79c0ff] transition-all font-mono text-sm flex items-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-paper-plane"></i> Publish Article
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#161B22] border-t border-[#30363D] mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-terminal text-[#58A6FF]"></i>
+                <span class="font-mono text-sm font-bold text-[#E6EDF3]">DevNotes</span>
+                <span class="text-xs text-[#8B949E]">© 2026. All rights reserved.</span>
+            </div>
+            <div class="flex items-center gap-6 text-sm font-mono text-[#8B949E]">
+                <a href="index.html" class="hover:text-[#58A6FF] transition-colors">Home</a>
+                <a href="dashboard.html" class="hover:text-[#58A6FF] transition-colors">Dashboard</a>
+                <a href="create-blog.html" class="hover:text-[#58A6FF] transition-colors">Create_Blog</a>
+                <a href="login.html" class="hover:text-[#58A6FF] transition-colors">Login</a>
+                <a href="register.html" class="hover:text-[#58A6FF] transition-colors">Register</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR MOBILE MENU & FORM SUBMISSION -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-xl';
+            }
+        });
+
+        // Basic form validation / submission feedback
+        document.getElementById('create-blog-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Article published successfully! (Dummy simulation)');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>
